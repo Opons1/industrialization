@@ -2,12 +2,14 @@ core.register_node(":industrialization:stone", {
     tiles = {"industrialization_stone.png"},
     groups = {stone = 1}
 })
-core.register_alias("mapgen_stone", "core:stone")
+core.register_alias("mapgen_stone", "industrialization:stone")
 
 core.register_node(":industrialization:dirt", {
     tiles = {"industrialization_dirt.png"},
     groups = {crumbly = 1, soil = 1}
 })
+
+core.register_alias("mapgen_dirt", "industrialization:dirt")
 
 core.register_node(":industrialization:grass", {
     tiles = {
