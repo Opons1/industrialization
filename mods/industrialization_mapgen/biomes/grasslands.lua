@@ -1,9 +1,9 @@
 core.register_biome({
     name = "grasslands",
 
-    node_top = "core:grass",
+    node_top = "industrialization:grass",
     depth_top = 1,
-    node_filler = "core:dirt",
+    node_filler = "industrialization:dirt",
     depth_filler = 6,
     y_max = 31000,
     y_min = 1,
@@ -28,7 +28,7 @@ core.register_biome({
 core.register_decoration({
     deco_type = "schematic",
 
-    place_on = "core:grass",
+    place_on = "industrialization:grass",
 
     sidelen = 8,
 
