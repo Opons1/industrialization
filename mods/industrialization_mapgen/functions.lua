@@ -43,3 +43,46 @@ function industrialization.register_grass(count, tilestart, data)
         })
     end
 end
+--sapling is a registered node
+--growth_time_min and max are both numbers to be used with math.random to get growth time
+--growth_func can be a string(schem), a table(schem), or a function
+industrialization.saplings = {}
+
+function industrialization.register_sapling(sapling, growth_time_min, growth_time_max, growth_func, data)
+    if not core.registered_nodes[sapling] then
+        error("[industrialization_mapgen] sapling must be registered before using register_sapling")
+    end
+
+    local on_construct = function(pos)
+        local timer = core.get_node_timer(pos)
+        timer:start(math.random(growth_time_min, growth_time_max))
+    end
+
+    local required_light = data and data.light or 13
+
+    local growth_function
+    if type(growth_func) == "function" then
+        growth_function = growth_func
+    elseif type(growth_func) == "table" then
+        growth_function = function(pos)
+            core.place_schematic(pos, growth_func[math.random(1, #growth_func)], "random", {}, false, "place_center_x, place_center_z")
+        end
+    elseif type(growth_func) == "string" then
+        growth_function = function(pos)
+            core.place_schematic(pos, growth_func, "random", {}, false, "place_center_x, place_center_z")
+        end
+    end
+
+    local on_timer = function(pos)
+        local light = core.get_node_light(pos)
+        if light >= required_light then
+            growth_function(pos)
+        end
+    end
+
+    core.override_item(sapling, {
+        on_timer = on_timer,
+        on_construct = on_construct
+    })
+
+end

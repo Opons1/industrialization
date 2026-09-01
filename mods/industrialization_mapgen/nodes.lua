@@ -66,3 +66,17 @@ industrialization.register_grass(3, "industrialization_grass_", {
     groups = {oddly_breakable_by_hand = 1,}
 
 })
+
+core.register_node(":industrialization:sapling_oak", {
+    description = "Oak Sapling",
+    drawtype = "plantlike",
+    paramtype = "light",
+    tiles = {"industrialization_oak_sapling.png"},
+    inventory_image = "industrialization_oak_sapling.png",
+    groups = {oddly_breakable_by_hand = 2},
+})
+
+industrialization.register_sapling("industrialization:sapling_oak", 1, 3,
+    core.get_modpath("industrialization_mapgen") .. "/schems/oak_tree_1.mts"
+
+)
