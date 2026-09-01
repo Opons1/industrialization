@@ -24,7 +24,7 @@ core.register_node(":industrialization:grass_block", {
     "industrialization_dirt.png",
 	"industrialization_dirt.png^industrialization_grass_side.png",
     },
-    groups = {crumbly = 1, soil = 1, grass_block = 1}
+    groups = {crumbly = 1, soil = 1, grass_block = 1},
 })
 
 core.register_node(":industrialization:oak_tree", {

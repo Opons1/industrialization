@@ -1,0 +1,3 @@
+on_step field on nodes
+every 0.5 seconds 
+function(player)
