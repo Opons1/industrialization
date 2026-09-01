@@ -13,7 +13,7 @@ core.register_alias("mapgen_dirt", "industrialization:dirt")
 
 core.register_node(":industrialization:sand", {
     tiles = {"industrialization_sand.png"},
-    groups = {crumbly = 1, sand = 1}
+    groups = {crumbly = 1, sand = 1, falling_node = 1}
 })
 
 core.register_alias("mapgen_sand", "industrialization:sand")
@@ -40,24 +40,29 @@ core.register_node(":industrialization:leaves", {
 
 core.register_node(":industrialization:gravel", {
     tiles = {"industrialization_gravel.png"},
-    groups = {crumbly = 2}
+    groups = {crumbly = 2, falling_node = 1}
 })
 core.register_alias("mapgen_gravel", "industrialization:gravel")
 
 
-for i = 1, 3 do
-    core.register_node(":industrialization:grass_" .. i, {
-        tiles = {"industrialization_grass_" .. i .. ".png"},
-        groups = {oddly_breakable_by_hand = 1},
-        drawtype = "plantlike",
-        paramtype = "light",
-        walkable = false,
-        light_propagates = true,
-        selection_box = {
-	    type = "fixed",
-	        fixed = {
-		        {-0.5000, -0.5000, -0.5000, 0.5000, -0.2500, 0.5000}
-	        }
+
+
+core.register_node(":industrialization:rock", {
+    drawtype = "nodebox",
+    paramtype = "light",
+    tiles = {"industrialization_stone.png"},
+    node_box = {
+        type = "fixed",
+        fixed = {
+            {-0.31, -0.5, -0.13, 0.13, -0.25, 0.19}
         }
-    })
-end
+    },
+    groups = {stone = 1, oddly_breakable_by_hand = 2}
+})
+
+industrialization.register_grass(3, "industrialization_grass_", {
+    description = "Grass",
+    name = "industrialization:grass",
+    groups = {oddly_breakable_by_hand = 1,}
+
+})
