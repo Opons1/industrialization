@@ -1,6 +1,6 @@
 core.register_node(":industrialization:stone", {
     tiles = {"industrialization_stone.png"},
-    groups = {stone = 1}
+    groups = {stone = 1, cracky = 1}
 })
 core.register_alias("mapgen_stone", "industrialization:stone")
 
@@ -29,7 +29,7 @@ core.register_node(":industrialization:grass_block", {
 
 core.register_node(":industrialization:oak_tree", {
 	tiles = {"industrialization_oak_top.png", "industrialization_oak_top.png", "industrialization_oak_tree.png"},
-    groups = {tree = 1}
+    groups = {tree = 1, choppy = 1}
 })
 
 core.register_node(":industrialization:leaves", {
@@ -91,7 +91,7 @@ core.register_node(":industrialization:rock", {
 industrialization.register_grass(3, "industrialization_grass_", {
     description = "Grass",
     name = "industrialization:grass",
-    groups = {oddly_breakable_by_hand = 1,}
+    groups = {oddly_breakable_by_hand = 1, grass = 1}
 
 })
 
@@ -106,5 +106,4 @@ core.register_node(":industrialization:sapling_oak", {
 
 industrialization.register_sapling("industrialization:sapling_oak", 1, 3,
     core.get_modpath("industrialization_mapgen") .. "/schems/oak_tree_1.mts"
-
 )
