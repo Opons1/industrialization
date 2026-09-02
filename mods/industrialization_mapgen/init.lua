@@ -1,5 +1,7 @@
 local mp = core.get_modpath("industrialization_mapgen")
 dofile(mp .. "/functions.lua")
+dofile(mp .. "/craftitems.lua")
+
 dofile(mp .. "/nodes.lua")
 dofile(mp .. "/liquids.lua")
 

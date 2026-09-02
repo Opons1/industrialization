@@ -35,7 +35,23 @@ core.register_node(":industrialization:oak_tree", {
 core.register_node(":industrialization:leaves", {
     drawtype = "allfaces",
     tiles = {"industrialization_oak_leaves.png"},
-    groups = {leaves = 1, snappy = 1}
+    groups = {leaves = 1, snappy = 1},
+    drop = {
+        items = {
+            {
+                rarity = 10,
+                items = {"industrialization:stick"},
+            },
+            {
+                rarity = 20,
+                items = {"industrialization:sapling_oak"},
+
+            },
+            {
+                items = {"industrialization:leaves"},
+            },
+        },
+    },
 })
 
 core.register_node(":industrialization:gravel", {
@@ -57,7 +73,19 @@ core.register_node(":industrialization:rock", {
             {-0.31, -0.5, -0.13, 0.13, -0.25, 0.19}
         }
     },
-    groups = {stone = 1, oddly_breakable_by_hand = 2}
+    groups = {oddly_breakable_by_hand = 2},
+    on_use = function(itemstack, user, pointed_thing)
+        local node = core.get_node(pointed_thing.under)
+        if core.registered_nodes[node.name].groups.stone then
+            local inv = user:get_inventory()
+            local added = inv:add_item("main", "industrialization:sharp_rock")
+            itemstack:take_item()
+            if added:is_empty() then
+                return itemstack
+            end
+        end
+    end
+
 })
 
 industrialization.register_grass(3, "industrialization_grass_", {
