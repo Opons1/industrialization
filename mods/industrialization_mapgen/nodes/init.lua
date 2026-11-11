@@ -1,3 +1,6 @@
+local mp = core.get_modpath("industrialization_mapgen") .. "/nodes"
+dofile(mp .. "/grass.lua")
+
 core.register_node(":industrialization:stone", {
     tiles = {"industrialization_stone.png"},
     groups = {stone = 1, cracky = 1}
@@ -17,15 +20,6 @@ core.register_node(":industrialization:sand", {
 })
 
 core.register_alias("mapgen_sand", "industrialization:sand")
-
-core.register_node(":industrialization:grass_block", {
-    tiles = {
-    "industrialization_grass_top.png",
-    "industrialization_dirt.png",
-	"industrialization_dirt.png^industrialization_grass_side.png",
-    },
-    groups = {crumbly = 1, soil = 1, grass_block = 1},
-})
 
 core.register_node(":industrialization:oak_tree", {
 	tiles = {"industrialization_oak_top.png", "industrialization_oak_top.png", "industrialization_oak_tree.png"},

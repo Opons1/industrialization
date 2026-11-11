@@ -19,6 +19,7 @@ function industrialization.register_player_globalstep(name, func)
 end
 
 industrialization.globalsteps.nodebelow = {}
+
 industrialization.register_player_globalstep("nodebelow", function(player)
     local pos = player:get_pos()
     pos.y = pos.y - 0.5
@@ -26,7 +27,7 @@ industrialization.register_player_globalstep("nodebelow", function(player)
     if nodebelow.name ~= "ignore" then
         local func = core.registered_nodes[nodebelow.name].on_step
         if type(func) == "function" then
-            func(player)
+            func(pos, player)
         end
     end
 end)
